@@ -1,5 +1,6 @@
 const commonConfig = require('./webpack.common.conf')
 const webpackMerge = require('webpack-merge')
+const TerserPlugin = require('terser-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -22,15 +23,7 @@ const config = webpackMerge(commonConfig, {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          compress: { drop_console: true },
-          output: { comments: false }
-        }
-      }),
+      new TerserPlugin({}),
       new OptimizeCSSAssetsPlugin({})
     ],
     runtimeChunk: { name: 'runtime' },
