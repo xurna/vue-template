@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <img src="~img/logo.jpg"/>
     <HelloWord :msg="msg"></HelloWord>
     <h2>Essential Links</h2>
     <ul>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import HelloWord from 'cmp/Hello'
 export default {
   name: 'HelloWorld',

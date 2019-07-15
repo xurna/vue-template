@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+import HelloWord from 'cmp/Hello'
+
 export default {
   name: 'NotFound',
   data () {

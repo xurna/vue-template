@@ -1,14 +1,14 @@
 const commonConfig = require('./webpack.common.conf')
 const webpackMerge = require('webpack-merge')
 const path = require('path')
-const webpack = require('webpack')
 const process = require('process')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
+const appDir = path.resolve(process.cwd(), 'app')
 const ip = require('ip')
 const port = 9000
 const host = ip.address()
-const appDir = path.resolve(process.cwd(), 'app')
+
 const config = webpackMerge(commonConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
@@ -24,6 +24,14 @@ const config = webpackMerge(commonConfig, {
     overlay: { // show errors on the page
       warnings: false,
       errors: true
+    },
+    // 打印打包信息配置
+    stats: {
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
     },
     proxy: {
       // '/api': {
@@ -66,6 +74,17 @@ const config = webpackMerge(commonConfig, {
         include: [appDir],
         exclude: [nodeModuleDir]
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader', // 需要安装file-loader
+          options: {
+            limit: 10000,
+          },
+        }],
+        include: [appDir],
+        exclude: [nodeModuleDir]
+      }
     ]
   }
 })
