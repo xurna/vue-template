@@ -74,11 +74,12 @@ vue function base 尝试，开发环境搭建
 
 
   ## 笔记
-  - babel：转换语法；多段填充在你目标环境中确实的特性；源代码变换；
+  - `babel`：转换语法；多段填充在你目标环境中确实的特性；源代码变换；
   - 使用`postcss-loader`需要配置`.postcssrc`或者`posetcss.config.js`，或者在webpack的rules里面的`postcss-loader`里面配置 `options`
+  - `babel-loader`在运行时，会检查这个`.babelrc`配置文件，并读取相关的语法和插件配置，或者在webpack的rules里面的`babel-loader`里面配置 `options`
   - `autoprefixer`也是共用了`.browserslistrc`的配置
   - `yargs.argv`就是包装后的`process.argv`，前者返回的是一个对象包含了键值对，后者则是返回一个字符串数组
-  - babel的modules设置为false，css modules
+  - babel的`modules`设置为false，优化`tree-shaking`
   - `vue-router`路由懒加载
     ```
     new Router({
@@ -229,4 +230,3 @@ vue function base 尝试，开发环境搭建
     ]
     ```
   - ignore某些用不到的大资源，譬如moment里的locale相关文件，用分析工具会看到体积巨大，可以配置`new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)`
-  - `babel-loader`在运行时，会检查这个`.babelrc`配置文件，并读取相关的语法和插件配置
