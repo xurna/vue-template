@@ -3,7 +3,6 @@ const path = require('path')
 const process = require('process')
 const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
 const appDir = path.resolve(process.cwd(), 'app')
-const assestPathName = 'static'
 function resolve(dir) {
   return path.join(appDir, dir)
 }

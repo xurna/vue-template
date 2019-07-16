@@ -23,7 +23,6 @@ const config = webpackMerge(commonConfig, {
   },
   optimization: {
     minimizer: [
-      // 相比uglifyjs，terser能支持es6+的语法
       new TerserPlugin({
         cache: true,
         parallel: true, // 开启并行压缩，充分利用cpu
@@ -36,24 +35,30 @@ const config = webpackMerge(commonConfig, {
     ],
     // 为每个入口提取出webpack runtime模块
     runtimeChunk: { name: 'manifest' },
-    // 采用splitChunks提取出entry chunk的chunk Group
     splitChunks: {
-      chunks: 'all', //同时分割同步和异步代码,推荐
+      automaticNameDelimiter: '~',
+      name: true,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      minChunks: 1,
+      minSize: 30000,
       cacheGroups: {
         // 处理入口chunk
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          chunks: 'initial', //初始化代码块
+          chunks: 'initial', 
           name: 'vendors',
-          // reuseExistingChunk: true, // 如果该chunk中引用了已经被抽取的chunk，直接引用该chunk，不会重复打包代码
+          reuseExistingChunk: true,
+          priority: 3
         },
-        // 处理异步chunk
+        // 处理异步按需加载chunk
         'async-vendors': {
           test: /[\\/]node_modules[\\/]/,
-          minChunks: 2, //最少被几个chunk引用，默认为1, 防止打包太多文件
-          chunks: 'async', // 按需加载代码块
+          minChunks: 2, 
+          chunks: 'async', 
           name: 'async-vendors',
-          reuseExistingChunk: true,  // 如果该chunk中引用了已经被抽取的chunk，直接引用该chunk，不会重复打包代码
+          reuseExistingChunk: true, 
+          priority: 2
         },
       }
     }
@@ -63,10 +68,10 @@ const config = webpackMerge(commonConfig, {
     // 从js中提取css，目前缺失HMR，所以只能在生成环境中使用
     new MiniCssExtractPlugin({
       filename: assestPathName + `/css/[name].[contenthash:8].css`,
-      chunkFilename: assestPathName + `/css/[id].[chunkhash:8].css`, // ???
+      chunkFilename: assestPathName + `/css/[id].[chunkhash:8].css`, 
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html', // 根路径是output.path
+      filename: 'index.html', 
       template: path.join(appDir, 'index.html'),
       title: '',
       inject: true,
@@ -75,16 +80,11 @@ const config = webpackMerge(commonConfig, {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
         conservativeCollapse: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      // chunksSortMode: 'dependency'
-      chunks: ['manifest', 'vendors', 'async-vendors', 'app']
+      chunks: ['manifest', 'vendors', 'app']
     }),
-    // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
-    new InlineManifestWebpackPlugin('manifest') // 将运行代码直接插入html文件中，因为这段代码非常少且时常改动，这样做可以避免一次请求的开销
+    new InlineManifestWebpackPlugin('manifest') 
   ],
   module: {
     rules: [
@@ -131,7 +131,7 @@ const config = webpackMerge(commonConfig, {
   stats: {
     colors: true,
     modules: false,
-    children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+    children: false, 
     chunks: false,
     chunkModules: false,
   }
