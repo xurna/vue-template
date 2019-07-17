@@ -1,5 +1,5 @@
 # vue-test
-vue项目环境搭建
+vue单页项目环境搭建
 
 ## 项目开发
 - 本地开发，执行`npm run dev`

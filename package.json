@@ -1,7 +1,7 @@
 {
   "name": "vue-test",
   "version": "1.0.0",
-  "description": "vue项目环境搭建",
+  "description": "vue单页项目环境搭建",
   "main": "index.js",
   "scripts": {
     "babel": "babel test/test.js",
