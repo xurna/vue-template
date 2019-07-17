@@ -79,7 +79,7 @@ vue function base 尝试，开发环境搭建
   - `babel-loader`在运行时，会检查这个`.babelrc`配置文件，并读取相关的语法和插件配置，或者在webpack的rules里面的`babel-loader`里面配置 `options`
   - `autoprefixer`也是共用了`.browserslistrc`的配置
   - `yargs.argv`就是包装后的`process.argv`，前者返回的是一个对象包含了键值对，后者则是返回一个字符串数组
-  - babel的`modules`设置为false，优化`tree-shaking`
+  - babel的`modules`设置为false，Webpack 会进行 `tree shaking`，去除一些无用代码
   - `vue-router`路由懒加载
     ```
     new Router({
