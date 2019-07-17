@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <img src="~img/logo.jpg"/>
+    <router-link to="/user">
+      <img src="~img/logo.png">
+    </router-link>
     <HelloWord :msg="msg"></HelloWord>
     <h2>Essential Links</h2>
     <ul>
       <li>
-        <router-link to="/user" >Core Docs</router-link>
+        <a href="https://vuejs.org" target="_blank">Core Docs</a>
       </li>
       <li>
         <a href="https://forum.vuejs.org" target="_blank">Forum</a>
@@ -37,10 +39,9 @@ export default {
   components: {
     HelloWord,
   },
-  created(){
-    getQuery('test')
+  created() {
   },
-  methods:{
+  methods: {
     setMsg() {
       this.msg = 'hello world'
     },
@@ -51,7 +52,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 @import "~less/variables";
-.hello{
+.hello {
   margin-top: 20px;
 }
 h1,

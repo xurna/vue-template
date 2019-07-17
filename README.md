@@ -1,5 +1,5 @@
 # vue-test
-vue function base 尝试，开发环境搭建
+vue项目环境搭建
 
 ## 步骤
 - 装依赖

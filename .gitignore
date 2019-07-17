@@ -1,17 +1,9 @@
-logs/
-__pycache__/
-
 .DS_Store
 node_modules
 package-lock.json
 yarn.lock
 stats.json
 app2
-
-# local env files
-.env.local
-.env.*.local
-package-lock.json
 
 # Log files
 npm-debug.log*
@@ -28,5 +20,5 @@ logs
 *.njsproj
 *.sln
 *.sw*
-.sh
+*.sh
 
