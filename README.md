@@ -72,6 +72,30 @@ vue function base 尝试，开发环境搭建
   Android > 3
   ```
 
+  ## `webpack` 安装 & 配置 
+  - 安装
+    - 工具包
+      ```npm i --save-dev webpack webpack-cli ```
+    - 服务器工具包 
+      ```npm i --save-dev webpack-dev-server```
+    - 打包工具包
+      ```
+      npm i --save-dev vue-loader vue-template-compiler babel-loader vue-style-loader less-loader css-loader postcss-loader url-loader file-loader webpack-merge clean-webpack-plugin html-webpack-plugin terser-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin
+      ```
+  - 详细
+    - `webpack` 核心包
+    - `webpack-cli` 命令行工具
+    - `webpack-dev-server` 提供一个web服务器并热更新实时重载页面
+    - `clean-webpack-plugin` 清除上一次打包文件
+    - `html-webpack-plugin` 生成html文件，并在页面中动态插入静态文件和内容
+    - `terser-webpack-plugin` 打包js
+    - `optimize-css-assets-webpack-plugin` 打包css
+    - `mini-css-extract-plugin` 将css从js文件中抽离
+    - `inline-manifest-webpack-plugin` 将生成的runtime代码插入到html
+    - `vue-loader`&`vue-template-compiler` vue编译loader
+    - `babel-loader` 语法转换loader，使用.bablerc文件配置
+    - `vue-style-loader `&`less-loader `&`css-loader `&`postcss-loader` css loader
+    - `url-loader`&`file-loader` 文件loader
 
   ## 笔记
   - `babel`：转换语法；多段填充在你目标环境中确实的特性；源代码变换；
