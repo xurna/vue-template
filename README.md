@@ -79,9 +79,9 @@ vue function base 尝试，开发环境搭建
     - 服务器工具包 
       ```npm i --save-dev webpack-dev-server```
     - 打包工具包
-      ```
+      `
       npm i --save-dev vue-loader vue-template-compiler babel-loader vue-style-loader less-loader css-loader postcss-loader url-loader file-loader webpack-merge clean-webpack-plugin html-webpack-plugin terser-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin
-      ```
+      `
   - 详细
     - `webpack` 核心包
     - `webpack-cli` 命令行工具
