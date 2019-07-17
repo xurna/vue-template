@@ -1,6 +1,10 @@
 # vue-test
 vue项目环境搭建
 
+## 项目开发
+- 本地开发，执行`npm run dev`
+- 项目上线构建，执行`npm run build`
+
 ## 步骤
 - 装依赖
   - 工具包
